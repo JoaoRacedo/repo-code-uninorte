@@ -2,22 +2,21 @@
 
 const Schema = use('Schema')
 
-class UsersTableSchema extends Schema {
+class ProjectsTableSchema extends Schema {
 
   up () {
-    this.create('users', (table) => {
+    this.create('projects', (table) => {
       table.increments()
       table.text('name').notNullable()
-      table.text('email').unique().notNullable()
       table.text('description').notNullable()
       table.timestamps()
     })
   }
 
   down () {
-    this.drop('users')
+    this.drop('projects')
   }
 
 }
 
-module.exports = UsersTableSchema
+module.exports = ProjectsTableSchema
