@@ -21,3 +21,5 @@ const Route = use('Route')
 
 Route.get('/users', 'UsersController.fetch')
 Route.post('/users', 'UsersController.create')
+
+Route.get('/projects', 'ProjectsController.fetch')

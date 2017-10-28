@@ -23,6 +23,7 @@ Path segments that begin with (:) indicate variables.
 - Auth: Yes
 - Scopes: Admin
 - Query:
+    - name: string
     - page: number
 - Returns:
     - users: array of objects
@@ -76,9 +77,8 @@ Path segments that begin with (:) indicate variables.
 - Body:
     - name: string
     - description: string
-    - technologies: string
     - tags: array of strings
-    - files: base64 string
+    - collaborators: array of ids
 - Returns:
     - project: object
 
@@ -105,6 +105,10 @@ Path segments that begin with (:) indicate variables.
 - Returns:
     - user: object
 
+## PUT /profile/avatar
+- Description: Updates my user's profile.
+- Auth: Yes
+
 ## PUT /projects/:projectId
 - Description: Updates a project's info
 - Auth: Yes
@@ -112,8 +116,8 @@ Path segments that begin with (:) indicate variables.
 - Body:
     - name: string
     - description: string
-    - technologies: string
     - tags: array of strings
+    - collaborators: array of ids
 - Returns:
     - project: object
 
@@ -121,8 +125,6 @@ Path segments that begin with (:) indicate variables.
 - Description: Updates a project's files
 - Auth: Yes
 - Scopes: Project Owner
-- Body:
-    - files: base64 string
 
 ## DELETE /projects/:projectId
 - Description: Delete a project

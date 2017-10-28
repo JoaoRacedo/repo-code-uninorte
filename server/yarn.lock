@@ -56,6 +56,16 @@ adonis-ace@^3.0.7:
     lodash "^4.17.2"
     node-exceptions "^2.0.0"
 
+adonis-ally@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/adonis-ally/-/adonis-ally-1.1.2.tgz#3d332259c7a66e5042017fbe62902113844b86e5"
+  dependencies:
+    cat-log "^1.0.2"
+    got "^6.3.0"
+    lodash "^4.15.0"
+    node-exceptions "^1.0.3"
+    oauth "^0.9.14"
+
 adonis-auth@^1.0.5:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/adonis-auth/-/adonis-auth-1.0.7.tgz#41eb7c74f6fd9240a1ea5d9593f385130add1a21"
@@ -1608,7 +1618,7 @@ globby@^5.0.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
-got@^6.7.1:
+got@^6.3.0, got@^6.7.1:
   version "6.7.1"
   resolved "https://registry.yarnpkg.com/got/-/got-6.7.1.tgz#240cd05785a9a18e561dc1b44b41c763ef1e8db0"
   dependencies:
@@ -2341,7 +2351,7 @@ lodash@^3.10.1:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
-lodash@^4.0.0, lodash@^4.12.0, lodash@^4.16.2, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.6.0:
+lodash@^4.0.0, lodash@^4.12.0, lodash@^4.15.0, lodash@^4.16.2, lodash@^4.17.2, lodash@^4.17.4, lodash@^4.3.0, lodash@^4.6.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -2632,6 +2642,10 @@ nunjucks@^3.0.0:
 oauth-sign@~0.8.1:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/oauth-sign/-/oauth-sign-0.8.2.tgz#46a6ab7f0aead8deae9ec0565780b7d4efeb9d43"
+
+oauth@^0.9.14:
+  version "0.9.15"
+  resolved "https://registry.yarnpkg.com/oauth/-/oauth-0.9.15.tgz#bd1fefaf686c96b75475aed5196412ff60cfb9c1"
 
 object-assign@4.1.0:
   version "4.1.0"
