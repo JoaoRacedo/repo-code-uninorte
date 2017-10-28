@@ -23,3 +23,4 @@ Route.get('/users', 'UsersController.fetch')
 Route.post('/users', 'UsersController.create')
 
 Route.get('/projects', 'ProjectsController.fetch')
+Route.post('/uploads', 'UploadsController.test')
