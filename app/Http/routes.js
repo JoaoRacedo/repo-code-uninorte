@@ -24,3 +24,6 @@ Route.post('/users', 'UsersController.create')
 
 Route.get('/projects', 'ProjectsController.fetch')
 Route.post('/uploads', 'UploadsController.test')
+
+Route.get('/redirect/google', 'LoginController.redirect')
+Route.get('/authenticated/google', 'LoginController.handleCallback')
