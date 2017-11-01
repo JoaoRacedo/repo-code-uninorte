@@ -8,7 +8,7 @@ Path segments that begin with (:) indicate variables.
 - Description: Fetches a project by id.
 - Auth: No
 - Returns:
-    - project: object
+    - data: object
 
 ## GET /search
 - Description: Searches projects by tags.
@@ -16,7 +16,7 @@ Path segments that begin with (:) indicate variables.
 - Query:
     - tags: string
 - Returns:
-    - projects: array of objects
+    - data: array of objects
 
 ## GET /users
 - Description: Displays users.
@@ -26,7 +26,7 @@ Path segments that begin with (:) indicate variables.
     - name: string
     - page: number
 - Returns:
-    - users: array of objects
+    - data: array of objects
 
 ## GET /admins
 - Description: Displays admin users.
@@ -35,19 +35,19 @@ Path segments that begin with (:) indicate variables.
 - Query:
     - page: number
 - Returns:
-    - admins: array of objects
+    - data: array of objects
 
 ## GET /users/:userId
 - Description: Fetches an user's profile.
 - Auth: No
 - Returns:
-    - user: object
+    - data: object
 
 ## GET /users/:userId/projects
 - Description: Fetches an user's projects.
 - Auth: No
 - Returns:
-    - projects: array of objects
+    - data: array of objects
 
 ## POST /users
 - Description: Creates a new user (Sign Up).
@@ -59,17 +59,7 @@ Path segments that begin with (:) indicate variables.
     - password: string
     - confirm: string
 - Returns:
-    - user: object
-
-## POST /login
-- Description: Logs into the system.
-- Auth: No
-- Body:
-    - email: string
-    - password: string
-- Returns:
-    - user: object
-    - credentials: string
+    - data: object
 
 ## POST /projects
 - Description: Creates a new project.
@@ -87,6 +77,8 @@ Path segments that begin with (:) indicate variables.
 - Auth: Yes
 - Body:
     - stars: number
+- Returns:
+    - data: object
 
 ## POST /admins
 - Description: Adds user to admins.
@@ -94,6 +86,8 @@ Path segments that begin with (:) indicate variables.
 - Scopes: Admin
 - Body:
     - email: string
+- Returns:
+    - data: object
 
 ## PUT /profile
 - Description: Updates my user's profile.
@@ -103,11 +97,13 @@ Path segments that begin with (:) indicate variables.
     - email: string
     - description: string
 - Returns:
-    - user: object
+    - data: object
 
 ## PUT /profile/avatar
 - Description: Updates my user's profile.
 - Auth: Yes
+- Returns:
+    - data: object
 
 ## PUT /projects/:projectId
 - Description: Updates a project's info
@@ -119,12 +115,14 @@ Path segments that begin with (:) indicate variables.
     - tags: array of strings
     - collaborators: array of ids
 - Returns:
-    - project: object
+    - data: object
 
 ## PUT /projects/:projectId/files
 - Description: Updates a project's files
 - Auth: Yes
 - Scopes: Project Owner
+- Returns:
+    - data: object
 
 ## DELETE /projects/:projectId
 - Description: Delete a project
