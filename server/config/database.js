@@ -4,7 +4,6 @@ const Env = use('Env')
 const Helpers = use('Helpers')
 
 module.exports = {
-
   /*
   |--------------------------------------------------------------------------
   | Default Connection
@@ -76,5 +75,4 @@ module.exports = {
       database: Env.get('DB_DATABASE', 'adonis')
     }
   }
-
 }

@@ -10,7 +10,7 @@ Path segments that begin with (:) indicate variables.
 - Returns:
     - data: object
 
-## GET /search
+## GET /projects
 - Description: Searches projects by tags.
 - Auth: No
 - Query:
@@ -49,15 +49,13 @@ Path segments that begin with (:) indicate variables.
 - Returns:
     - data: array of objects
 
-## POST /users
+## POST /users (??? DELETE ???)
 - Description: Creates a new user (Sign Up).
 - Auth: No
 - Body:
     - name: string
     - email: string
     - description: string
-    - password: string
-    - confirm: string
 - Returns:
     - data: object
 
@@ -70,7 +68,7 @@ Path segments that begin with (:) indicate variables.
     - tags: array of strings
     - collaborators: array of ids
 - Returns:
-    - project: object
+    - data: object
 
 ## POST /projects/:projectId/rating
 - Description: Submits a rating of a project.
@@ -100,13 +98,15 @@ Path segments that begin with (:) indicate variables.
     - data: object
 
 ## PUT /profile/avatar
-- Description: Updates my user's profile.
+- Description: Updates my user's profile. Accepts only Form Data as input.
 - Auth: Yes
+- Body:
+    - avatar
 - Returns:
     - data: object
 
 ## PUT /projects/:projectId
-- Description: Updates a project's info
+- Description: Updates a project's info.
 - Auth: Yes
 - Scopes: Project Owner
 - Body:
@@ -118,9 +118,11 @@ Path segments that begin with (:) indicate variables.
     - data: object
 
 ## PUT /projects/:projectId/files
-- Description: Updates a project's files
+- Description: Updates a project's files. Accepts only Form Data as input.
 - Auth: Yes
 - Scopes: Project Owner
+- Body:
+    - files
 - Returns:
     - data: object
 
