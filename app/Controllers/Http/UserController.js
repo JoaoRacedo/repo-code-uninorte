@@ -1,5 +1,6 @@
 'use strict'
 
+const Drive = use('Drive')
 const Helpers = use('Helpers')
 const { validateAll } = use('Validator')
 
@@ -114,8 +115,25 @@ class UserController {
     return { data }
   }
 
-  async getAvatat ({ params, response }) {
+  async getAvatar ({ params, response }) {
     const { id } = params
+
+    const paths = [
+      `avatars/${id}.png`,
+      `avatars/${id}.jpg`,
+      `avatars/${id}.jpeg`,
+      `empty-avatar.png`
+    ]
+
+    let avatarPath
+    let avatarExists
+    for (const path of paths) {
+      avatarPath = path
+      avatarExists = await Drive.exists(avatarPath)
+      if (avatarExists) break
+    }
+
+    response.download(Helpers.tmpPath(avatarPath))
   }
 }
 

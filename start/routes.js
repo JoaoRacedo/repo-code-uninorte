@@ -25,11 +25,11 @@ Route
 
     Route.get('/projects', 'ProjectController.list')
     Route.get('/projects/:id', 'ProjectController.fetch')
-    Route.get('/projects/:id/files', () => 'OK') // FIXME:
+    Route.get('/projects/:id/files', 'ProjectController.getFiles')
     Route.get('/projects/:id/ratings', 'ProjectController.getRatings')
 
     Route.get('/users/:id', 'UserController.fetch')
-    Route.put('/users/:id/avatar', 'UserController.getAvatar')
+    Route.get('/users/:id/avatar', 'UserController.getAvatar')
     Route.get('/users/:id/projects', 'UserController.fetchProjects')
     Route.post('/users', 'UserController.create')
   })

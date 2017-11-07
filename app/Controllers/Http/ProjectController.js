@@ -1,6 +1,7 @@
 'use strict'
 
 const Database = use('Database')
+const Drive = use('Drive')
 const Helpers = use('Helpers')
 
 const ProjectModel = use('App/Models/Project')
@@ -136,6 +137,20 @@ class ProjectController {
     const data = await ProjectRatingModel.updateRating(user, project, stars)
 
     return { data }
+  }
+
+  async getFiles ({ params, response }) {
+    const { id } = params
+
+    const filepath = `files/${id}.zip`
+    const fileExists = await Drive.exists(filepath)
+
+    if (!fileExists) {
+      response.status(404).send({ message: 'No se encontro el archivo' })
+      return
+    }
+
+    response.attachment(Helpers.tmpPath(filepath))
   }
 }
 
