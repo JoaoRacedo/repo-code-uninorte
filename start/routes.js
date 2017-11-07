@@ -44,7 +44,7 @@ Route
       .validator('Project')
       .middleware(['projectBelongsToUser'])
 
-    Route.put('/projects/:id/files', () => 'OK').middleware(['projectBelongsToUser']) // FIXME:
+    Route.put('/projects/:id/files', 'ProjectController.updateFiles').middleware(['projectBelongsToUser']) // FIXME:
 
     Route.delete('/projects/:id', 'ProjectController.delete')
 
@@ -53,7 +53,7 @@ Route
     Route.put('/users/:id', 'UserController.update')
       .middleware(['isUser'])
 
-    Route.put('/users/:id/avatar', () => 'OK').middleware(['isUser']) // FIXME:
+    Route.put('/users/:id/avatar', 'UserController.updateAvatar').middleware(['isUser'])
   })
   .prefix(prefix)
   .middleware(['auth'])

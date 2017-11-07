@@ -135,6 +135,31 @@ class UserController {
 
     response.download(Helpers.tmpPath(avatarPath))
   }
+
+  async updateAvatar ({ params, request, response }) {
+    const { id } = params
+
+    const file = request.file('avatar', {
+      types: ['image'],
+      size: '500kb'
+    })
+
+    const ext = file.stream.filename.split('.').pop() // HACK: this used to be possible
+
+    const name = `${id}.${ext}`
+    const filepath = `avatars/${name}`
+
+    await Drive.delete(filepath)
+
+    // curl -F <property name>=@</path/to/file.ext> http://localhost:3333/api/v1/users/<id>/avatar
+    await file.move(Helpers.tmpPath('avatars'), { name })
+
+    if (!file.moved()) {
+      return file.error()
+    }
+
+    return { message: 'File uploaded successfully' }
+  }
 }
 
 module.exports = UserController
