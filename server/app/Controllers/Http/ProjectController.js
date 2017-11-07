@@ -76,21 +76,6 @@ class ProjectController {
     return { data }
   }
 
-  async uploadFile ({ request, response }) {
-    const file = request.file('file', {
-      maxSize: '20mb'
-    })
-
-    // curl -F file=@/Users/sebastian/Pictures/photo.jpg http://localhost:3333/uploads
-    await file.move(Helpers.tmpPath('uploads'), `1.${file.extension()}`)
-
-    if (!file.moved()) {
-      return file.error()
-    }
-
-    return { message: 'File uploaded successfully' }
-  }
-
   async delete ({ auth, params, request, response }) {
     const { user_id: userId } = await auth.getUser()
 
@@ -151,6 +136,34 @@ class ProjectController {
     }
 
     response.attachment(Helpers.tmpPath(filepath))
+  }
+
+  async updateFiles ({ params, request, response }) {
+    const { id } = params
+
+    const file = request.file('files', {
+      size: '20mb'
+    })
+
+    const ext = file.stream.filename.split('.').pop() // HACK: this used to be possible
+
+    if (ext !== 'zip') {
+      response.status(400).send({ message: 'Debe subir un archivo .zip' })
+      return
+    }
+
+    const name = `${id}.${ext}`
+    const filepath = `files/${name}`
+
+    await Drive.delete(filepath)
+
+    await file.move(Helpers.tmpPath('files'), { name })
+
+    if (!file.moved()) {
+      return file.error()
+    }
+
+    return { message: 'File uploaded successfully' }
   }
 }
 
