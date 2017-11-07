@@ -15,21 +15,57 @@
 
 const Route = use('Route')
 
+const prefix = '/api/v1'
+
 Route
   .group(() => {
+    Route.get('/ok', () => 'OK')
+
+    Route.post('/login/email', 'CredentialController.signInWithEmailAndPassword')
+
     Route.get('/projects', 'ProjectController.list')
     Route.get('/projects/:id', 'ProjectController.fetch')
-    Route.post('/projects', 'ProjectController.create').validator('Project')
-    Route.put('/projects/:id', 'ProjectController.update').validator('Project')
-    Route.delete('/projects/:id', 'ProjectController.delete')
+    Route.get('/projects/:id/files', () => 'OK') // FIXME:
+    Route.get('/projects/:id/ratings', 'ProjectController.getRatings')
 
     Route.get('/users/:id', 'UserController.fetch')
+    Route.put('/users/:id/avatar', 'UserController.getAvatar')
     Route.get('/users/:id/projects', 'UserController.fetchProjects')
     Route.post('/users', 'UserController.create')
-    Route.put('/profile', 'UserController.update').validator('User')
-
-    Route.get('/protected', async ({ request, response }) => {
-      response.send('OK')
-    })
   })
-  .prefix('/api/v1')
+  .prefix(prefix)
+
+// authenticated routes
+Route
+  .group(() => {
+    Route.post('/projects', 'ProjectController.create').validator('Project')
+
+    Route.put('/projects/:id', 'ProjectController.update')
+      .validator('Project')
+      .middleware(['projectBelongsToUser'])
+
+    Route.put('/projects/:id/files', () => 'OK').middleware(['projectBelongsToUser']) // FIXME:
+
+    Route.delete('/projects/:id', 'ProjectController.delete')
+
+    Route.post('/projects/:id/ratings', 'ProjectController.postRating').validator('ProjectRating')
+
+    Route.put('/users/:id', 'UserController.update')
+      .middleware(['isUser'])
+
+    Route.put('/users/:id/avatar', () => 'OK').middleware(['isUser']) // FIXME:
+  })
+  .prefix(prefix)
+  .middleware(['auth'])
+
+// admin routes
+Route
+  .group(() => {
+    Route.get('/users', 'UserController.list')
+
+    Route.get('/admins', 'AdminController.list')
+    Route.post('/admins', 'AdminController.add')
+    Route.delete('/admins', 'AdminController.remove')
+  })
+  .prefix(prefix)
+  .middleware(['auth', 'admin'])

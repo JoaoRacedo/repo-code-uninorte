@@ -6,8 +6,7 @@ class ScopesSchema extends Schema {
   up () {
     this.create('scopes', (table) => {
       table.increments()
-      table.integer('user_id').notNullable()
-      table.foreign('user_id').references('users.id')
+      table.integer('user_id').notNullable().references('users.id').onDelete('CASCADE')
       table.text('scope').notNullable()
       table.timestamps()
     })
