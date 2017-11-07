@@ -4,11 +4,35 @@ Every API endpoint that requires authentication is secured with JSON Web Tokens 
 
 Path segments that begin with (:) indicate variables.
 
-## GET /projects/:projectId
+## Usage
+
+All routes are prefixed with /api/v1. To use authenticated routes you must provide the JWT token in the Authorization header as:
+
+```
+Authorization: Bearer <token>
+```
+
+To get a JWT token call /api/v1/login/email with the user credentials.
+
+Required Headers on all routes:
+
+```
+Accept: application/json
+Content-Type: application/json
+```
+
+## GET /projects/:id
 - Description: Fetches a project by id.
 - Auth: No
 - Returns:
     - data: object
+
+## GET /projects/:id/ratings
+- Description: Fetches the average rating of the project.
+- Auth: No
+- Returns:
+    - data: object
+        - stars: number
 
 ## GET /projects
 - Description: Searches projects by tags.
@@ -37,19 +61,30 @@ Path segments that begin with (:) indicate variables.
 - Returns:
     - data: array of objects
 
-## GET /users/:userId
+## GET /users/:id
 - Description: Fetches an user's profile.
 - Auth: No
 - Returns:
     - data: object
 
-## GET /users/:userId/projects
+## GET /users/:id/projects
 - Description: Fetches an user's projects.
 - Auth: No
 - Returns:
     - data: array of objects
 
-## POST /users (??? DELETE ???)
+## POST /login/email
+- Description: Fetches user credentials.
+- Auth: No
+- Body:
+    - name: string
+    - description: string
+    - email: string
+    - password: string
+- Returns:
+    - data: object
+
+## POST /users
 - Description: Creates a new user (Sign Up).
 - Auth: No
 - Body:
@@ -70,7 +105,7 @@ Path segments that begin with (:) indicate variables.
 - Returns:
     - data: object
 
-## POST /projects/:projectId/rating
+## POST /projects/:projectId/ratings
 - Description: Submits a rating of a project.
 - Auth: Yes
 - Body:
@@ -87,7 +122,7 @@ Path segments that begin with (:) indicate variables.
 - Returns:
     - data: object
 
-## PUT /profile
+## PUT /users/:id
 - Description: Updates my user's profile.
 - Auth: Yes
 - Body:
@@ -97,7 +132,7 @@ Path segments that begin with (:) indicate variables.
 - Returns:
     - data: object
 
-## PUT /profile/avatar
+## PUT /users/:id/avatar
 - Description: Updates my user's profile. Accepts only Form Data as input.
 - Auth: Yes
 - Body:
@@ -105,7 +140,7 @@ Path segments that begin with (:) indicate variables.
 - Returns:
     - data: object
 
-## PUT /projects/:projectId
+## PUT /projects/:id
 - Description: Updates a project's info.
 - Auth: Yes
 - Scopes: Project Owner

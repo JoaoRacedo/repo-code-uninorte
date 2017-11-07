@@ -6,7 +6,7 @@ class Project {
       name: 'required|string',
       description: 'required|string',
       tags: 'required|array',
-      collaborators: 'required|array'
+      collaborators: 'array'
     }
   }
 }
