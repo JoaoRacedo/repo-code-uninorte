@@ -121,19 +121,25 @@ class UserController {
     const paths = [
       `avatars/${id}.png`,
       `avatars/${id}.jpg`,
-      `avatars/${id}.jpeg`,
-      `empty-avatar.png`
+      `avatars/${id}.jpeg`
     ]
 
     let avatarPath
     let avatarExists
+
     for (const path of paths) {
       avatarPath = path
       avatarExists = await Drive.exists(avatarPath)
       if (avatarExists) break
     }
 
-    response.download(Helpers.tmpPath(avatarPath))
+    if (avatarExists) {
+      avatarPath = Helpers.tmpPath(avatarPath)
+    } else {
+      avatarPath = Helpers.publicPath('empty-avatar.png')
+    }
+
+    response.download(avatarPath)
   }
 
   async updateAvatar ({ params, request, response }) {
