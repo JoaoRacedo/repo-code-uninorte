@@ -6,6 +6,33 @@ Path segments that begin with (:) indicate variables.
 
 ## Usage
 
+Before beginning to use you must install `redis` and `postgres` and have them running. In `server/.env` you need to define the necessary environment variables for the server to connect to the database. `server/.env.example` has the necessary keys defined, except for `DB_USER`, `DB_PASSWORD`, and `DB_DATABASE`, you must fill these yourself. You must also run the following commands inside the server folder to set up the database:
+
+To install the Adonis CLI:
+```bash
+$ yarn global add @adonisjs/cli
+```
+
+To install all dependencies:
+```bash
+$ yarn
+```
+
+To set up the database with the correct schema:
+```bash
+$ adonis migration:run
+```
+
+To insert the default admin user:
+```bash
+$ adonis seed
+```
+
+To start running the server:
+```bash
+$ adonis serve --dev
+```
+
 All routes are prefixed with /api/v1. To use authenticated routes you must provide the JWT token in the Authorization header as:
 
 ```
@@ -14,7 +41,7 @@ Authorization: Bearer <token>
 
 To get a JWT token call /api/v1/login/email with the user credentials.
 
-Required Headers on all routes:
+Required headers on all routes:
 
 ```
 Accept: application/json
