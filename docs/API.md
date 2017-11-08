@@ -33,6 +33,9 @@ To start running the server:
 $ adonis serve --dev
 ```
 
+Default Admin User Email: admin@uninorte.edu.co
+Default Admin User Password: 123456
+
 All routes are prefixed with /api/v1. To use authenticated routes you must provide the JWT token in the Authorization header as:
 
 ```
