@@ -51,6 +51,8 @@ Accept: application/json
 Content-Type: application/json
 ```
 
+Base URL: https://repo-code-uninorte.herokuapp.com/api/v1
+
 ## GET /projects/:id
 - Description: Fetches a project by id.
 - Auth: No
