@@ -53,6 +53,10 @@ Content-Type: application/json
 
 Base URL: https://repo-code-uninorte.herokuapp.com/api/v1
 
+Credentials for Initial Admin User:
+- email: admin@uninorte.edu.co
+- password: 123456
+
 ## GET /projects/:id
 - Description: Fetches a project by id.
 - Auth: No
