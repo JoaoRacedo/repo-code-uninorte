@@ -121,6 +121,7 @@ Content-Type: application/json
     - name: string
     - email: string
     - description: string
+    - password: string
 - Returns:
     - data: object
 
