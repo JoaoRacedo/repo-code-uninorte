@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "migration": "./node_modules/.bin/adonis migration:run --force",
+    "seed": "./node_modules/.bin/adonis seed --force",
     "serve": "./node_modules/.bin/adonis serve",
     "start": "npm run migration && npm run serve",
     "test": "node ace test"
