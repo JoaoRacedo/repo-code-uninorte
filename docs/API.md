@@ -116,7 +116,8 @@ Credentials for Initial Admin User:
     - email: string
     - password: string
 - Returns:
-    - data: object
+    - data: object with token information
+    - user: object with user data
 
 ## POST /users
 - Description: Creates a new user (Sign Up).
