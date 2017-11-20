@@ -74,7 +74,7 @@ Credentials for Initial Admin User:
 - Description: Searches projects by tags.
 - Auth: No
 - Query:
-    - tags: string
+    - tags: array of string
 - Returns:
     - data: array of objects
 
@@ -113,8 +113,6 @@ Credentials for Initial Admin User:
 - Description: Fetches user credentials.
 - Auth: No
 - Body:
-    - name: string
-    - description: string
     - email: string
     - password: string
 - Returns:
