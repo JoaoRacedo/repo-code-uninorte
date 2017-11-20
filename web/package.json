@@ -1,0 +1,52 @@
+{
+  "name": "react-starter",
+  "version": "1.0.0",
+  "description": "react-starter web/responsive",
+  "private": true,
+  "engines": {
+    "node": ">=4.5.0",
+    "npm": "^3.0.0"
+  },
+  "scripts": {
+    "build": "npm run build-css && react-scripts build",
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "codecov": "cat coverage/*/lcov.info | codecov",
+    "eject": "react-scripts eject",
+    "install-typedefs": "flow-typed install",
+    "lint": "eslint bin build config server src tests",
+    "lint:fix": "npm run lint -- --fix",
+    "start": "npm-run-all -p watch-css start-js",
+    "start-js": "react-scripts start",
+    "test": "react-scripts test --env=jsdom",
+    "typecheck": "flow check",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive"
+  },
+  "devDependencies": {
+    "better-npm-run": "0.0.13",
+    "npm-run-all": "^4.0.2",
+    "react-scripts": "1.0.10"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "node-sass-chokidar": "^0.0.3",
+    "normalize.css": "^7.0.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.1.1"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.js?$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/app/__mocks__/fileMock.js",
+      "\\.(css|less|scss)$": "<rootDir>/app/__mocks__/styleMock.js"
+    },
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-dom",
+      "<rootDir>/node_modules/react-addons-test-utils",
+      "<rootDir>/node_modules/fbjs"
+    ]
+  }
+}
