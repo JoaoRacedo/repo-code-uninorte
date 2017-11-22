@@ -63,6 +63,11 @@ Credentials for Initial Admin User:
 - Returns:
     - data: object
 
+## GET /projects/:id/files
+- Description: Forces download the files of a project.
+- Auth: No
+- Returns: A file download for the project.
+
 ## GET /projects/:id/ratings
 - Description: Fetches the average rating of the project.
 - Auth: No
@@ -108,6 +113,11 @@ Credentials for Initial Admin User:
 - Auth: No
 - Returns:
     - data: array of objects
+
+## GET /users/:id/avatar
+- Description: Fetches an avatar for the user.
+- Auth: No
+- Returns: An image.
 
 ## POST /login/email
 - Description: Fetches user credentials.
